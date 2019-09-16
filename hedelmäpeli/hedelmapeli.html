@@ -7,14 +7,16 @@
     <link rel="stylesheet" type="text/css" href="joo.css">
     
 </head>
-<body>
+<body onload="update()">
     <div style=" background-color: antiquewhite">
         <header>
             <h1 class="nimi">Hedelmäpeli<h1>
         </header>
     </div>
     <div class="rahat">
-        <h3>Rahat: 75€</h3>
+        <h3>Rahat: <span id="rahat">75</span>€</h3>
+        <h5>Panos: <span id="panos"></span></h5>
+            <img id="panos" onclick="asetaPanos()" src="kuvat/kolikke.png" width=" 90px">
     </div>
     
     <button class="button">Play</button>
@@ -40,12 +42,10 @@
             <span class="lukko">
                 <img id="btn-lock4" data-lock="false" onclick="lukitse(this)" src="kuvat/lukko1.png"width="150px">
             </span>
+            
         </div>
-  
     </div>
 
     <script src="js.js"></script>       
 </body>
 </html>
-
-

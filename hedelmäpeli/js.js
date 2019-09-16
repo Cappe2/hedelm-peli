@@ -10,3 +10,22 @@ else {
     elem.dataset.lock = "false";
     }
 }
+
+//Panoksen vaihtaminen
+
+
+const panokset = [1,2,5,10];
+let index = -1;
+
+function asetaPanos () {
+    index++;
+    if (index > panokset.length-1) {
+        index = 0;
+    }
+    document.getElementById("panos").innerHTML = panokset[index];
+
+}
+
+function update(){
+    asetaPanos();
+}
