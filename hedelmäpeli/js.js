@@ -14,7 +14,7 @@ else {
 //Panoksen vaihtaminen
 
 
-const panokset = [1,2,5,10];
+const panokset = [1,2,5];
 let index = -1;
 
 function asetaPanos () {
