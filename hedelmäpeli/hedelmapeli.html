@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="joo.css">
     
 </head>
-<body onload="update()">
+<body onload="updateUi()">
     <div style=" background-color: antiquewhite">
         <header>
             <h1 class="nimi">Hedelmäpeli<h1>
@@ -21,15 +21,15 @@
             <img id="panos" onclick="asetaPanos()" src="kuvat/kolikke.png" width=" 90px">
     </div>
 
-    <button class="button">Play</button>
+    <button class="button" onclick="play()"><span id="Play">Play</span></button>
     
     
 
         <div class="images">
-            <img class="fruit" src="/kuvat/kirsikka.png">
-            <img class="fruit" src="kuvat/omena.png">
-            <img class="fruit" src="kuvat/päärynä.png">
-            <img class="fruit" src="kuvat/vesimeloni.png">
+            <img id="s1" class="fruit" src="/kuvat/kirsikka.png">
+            <img id="s2" class="fruit" src="kuvat/omena.png">
+            <img id="s3" class="fruit" src="kuvat/päärynä.png">
+            <img id="s4" class="fruit" src="kuvat/vesimeloni.png">
         </div>        
 
         <div class="locks">
