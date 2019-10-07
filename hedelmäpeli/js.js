@@ -5,13 +5,14 @@ let locks = [0,0,0,0];
 
 
 const panokset = [1,2,5];
-let index = -1;
+let panosIndex = 0;
 
 //UI päivitys
 
 function updateUi(){
     
-    asetaPanos();
+    // Panos
+    document.getElementById("panos").innerHTML = panokset[panosIndex];
 
     // Slottien kuvat
     document.getElementById('s1').src = "kuvat/" + images[slots[0]];
@@ -26,14 +27,33 @@ function updateUi(){
         document.getElementById("btn-lock1").src = "./kuvat/lukko2.png"
     }
 
+    if (locks[1] == 0) {
+        document.getElementById("btn-lock2").src = "./kuvat/lukko1.png"  
+    } else {
+        document.getElementById("btn-lock2").src = "./kuvat/lukko2.png"
+    }
+    if (locks[2] == 0) {
+        document.getElementById("btn-lock3").src = "./kuvat/lukko1.png"
+    } else {
+        document.getElementById("btn-lock3").src = "./kuvat/lukko2.png"
+    }
+    if (locks[3] == 0) {
+        document.getElementById("btn-lock4").src = "./kuvat/lukko1.png"
+    } else {
+        document.getElementById("btn-lock4").src = "./kuvat/lukko2.png"
+    }
+
 }
 
 //Play nappulan toiminta
-
 function play(){
+    
     if (locks[0] == 0) {
         slots[0] = Math.floor(Math.random() * 4);
     }    
+    if (locks[1] == 0) {
+        slots[1] = Math.floor(Math.random() * 4);
+    }
     
     slots[1] = Math.floor(Math.random() * 4);
     slots[2] = Math.floor(Math.random() * 4);
@@ -44,24 +64,45 @@ function play(){
 
 //Lukituspainikkeen kuvan vaihto
 function lukitse(elem) {
-    console.log(elem);
-    if (elem.dataset.lock == 'false')  {
-        document.getElementById(elem.id).src ="./kuvat/lukko2.png";
-        elem.dataset.lock = "true";
+    console.log(elem.dataset.lock);
+    
+    if (locks[elem.dataset.lock] == 0) {
+
+        locks[elem.dataset.lock] = 1;
+   
+    } else {
+        locks[elem.dataset.lock] = 0
+
+
     }
-    else {
-        document.getElementById(elem.id).src = "./kuvat/lukko1.png"
-        elem.dataset.lock = "false";
-    }
+        
+
+    
+    
+
+    updateUi();
+
+
+
+
+    // if (elem.dataset.lock == 'false')  {
+    //     document.getElementById(elem.id).src ="./kuvat/lukko2.png";
+    //     elem.dataset.lock = "true";
+    // }
+    // else {
+    //     document.getElementById(elem.id).src = "./kuvat/lukko1.png"
+    //     elem.dataset.lock = "false";
+    // }
 }
 
 //Panoksen vaihtaminen
 
 function asetaPanos () {
-    index++;
-    if (index > panokset.length-1) {
-        index = 0;
+    panosIndex++;
+    if (panosIndex > panokset.length-1) {
+        panosIndex = 0;
     }
-    document.getElementById("panos").innerHTML = panokset[index];
+    
+    updateUi()
 
 }
