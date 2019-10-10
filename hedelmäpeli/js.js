@@ -54,10 +54,19 @@ function play(){
     if (locks[1] == 0) {
         slots[1] = Math.floor(Math.random() * 4);
     }
-    
-    slots[1] = Math.floor(Math.random() * 4);
-    slots[2] = Math.floor(Math.random() * 4);
-    slots[3] = Math.floor(Math.random() * 4);
+    if (locks[2] == 0) {
+        slots[2] = Math.floor(Math.random() * 4);
+    }
+    if (locks[3] == 0) {
+        slots[3] = Math.floor(Math.random() * 4);
+    }
+    if (locks[4] == 0) {
+        slots[4] = Math.floor(Math.random() * 4);
+    }
+
+    locks[0] = locks[1] = 0;
+    locks [2] = locks[3] = 0;
+
     updateUi();
         
 }
