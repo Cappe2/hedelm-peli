@@ -2,6 +2,7 @@
 let images = [ "kirsikka.png", "omena.png", "päärynä.png", "vesimeloni.png"];
 let slots = [0,1,2,3];
 let locks = [0,0,0,0];
+let saa_lukita = false;
 
 
 const panokset = [1,2,5];
@@ -47,7 +48,7 @@ function updateUi(){
 
 //Play nappulan toiminta
 function play(){
-    
+
     if (locks[0] == 0) {
         slots[0] = Math.floor(Math.random() * 4);
     }    
@@ -60,12 +61,21 @@ function play(){
     if (locks[3] == 0) {
         slots[3] = Math.floor(Math.random() * 4);
     }
-    if (locks[4] == 0) {
-        slots[4] = Math.floor(Math.random() * 4);
-    }
+    // if (locks[4] == 0) {
+    //     slots[4] = Math.floor(Math.random() * 4);
+    // }
+
+    // Jos joku lukoista on lukittu, niin saa_lukita muutetaan falseksi
+
+    if (locks[0] == 1 || locks[1] == 1 || locks[2] == 1 || locks[3] == 1) 
+
+    // muussa tapauksessa saa_lukita muutetaan trueksi
+   
 
     locks[0] = locks[1] = 0;
     locks [2] = locks[3] = 0;
+
+    
 
     updateUi();
         
@@ -75,6 +85,10 @@ function play(){
 function lukitse(elem) {
     console.log(elem.dataset.lock);
     
+    if (saa_lukita == false) {
+        return;
+    }
+
     if (locks[elem.dataset.lock] == 0) {
 
         locks[elem.dataset.lock] = 1;
@@ -92,16 +106,6 @@ function lukitse(elem) {
     updateUi();
 
 
-
-
-    // if (elem.dataset.lock == 'false')  {
-    //     document.getElementById(elem.id).src ="./kuvat/lukko2.png";
-    //     elem.dataset.lock = "true";
-    // }
-    // else {
-    //     document.getElementById(elem.id).src = "./kuvat/lukko1.png"
-    //     elem.dataset.lock = "false";
-    // }
 }
 
 //Panoksen vaihtaminen
