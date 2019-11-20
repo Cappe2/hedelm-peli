@@ -3,6 +3,7 @@ let images = [ "kirsikka.png", "omena.png", "päärynä.png", "vesimeloni.png"];
 let slots = [0,1,2,3];
 let locks = [0,0,0,0];
 let saa_lukita = false;
+let rahat = 75;
 
 
 const panokset = [1,2,5];
@@ -12,8 +13,11 @@ let panosIndex = 0;
 
 function updateUi(){
     
+    document.getElementById("rahat").innerHTML = rahat;
+
     // Panos
     document.getElementById("panos").innerHTML = panokset[panosIndex];
+    
 
     // Slottien kuvat
     document.getElementById('s1').src = "kuvat/" + images[slots[0]];
@@ -49,6 +53,12 @@ function updateUi(){
 //Play nappulan toiminta
 function play(){
 
+    rahat = rahat - panokset[panosIndex]
+
+    if (rahat < panokset[panosIndex]){
+        location.reload();
+    }
+    
     if (locks[0] == 0) {
         slots[0] = Math.floor(Math.random() * 4);
     }    
@@ -61,9 +71,13 @@ function play(){
     if (locks[3] == 0) {
         slots[3] = Math.floor(Math.random() * 4);
     }
-    // if (locks[4] == 0) {
-    //     slots[4] = Math.floor(Math.random() * 4);
-    // }
+
+    
+
+
+    
+   
+    
 
     // Jos joku lukoista on lukittu, niin saa_lukita muutetaan falseksi
 
@@ -98,15 +112,12 @@ function lukitse(elem) {
 
 
     }
-        
 
-    
-    
+    }
+        
 
     updateUi();
 
-
-}
 
 //Panoksen vaihtaminen
 
@@ -119,3 +130,8 @@ function asetaPanos () {
     updateUi()
 
 }
+
+//voiton tarkistus
+
+
+
