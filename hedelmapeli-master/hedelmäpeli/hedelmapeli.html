@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <div class="overlay">
+    <title> Hedelmäpeli</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="joo.css">
+    
+</head>
+<body onload="updateUi()">
+    <div style=" background-color: antiquewhite">
+        <header>
+            <h1 class="nimi">Hedelmäpeli<h1>
+        </header>
+    </div>
+    <div class="rahat">
+        <h3>Rahat: <span id="rahat">75</span>€</h3>
+        <h5>Panos: <span id="panos"></span></h5>
+        <img src="kuvat/voitto.png" width="200px">
+        
+            <img id="panos" onclick="asetaPanos()" src="kuvat/kolikke.png" width=" 90px">
+    </div>
+
+    <button class="button" onclick="play()"><span id="Play">Play</span></button>
+    
+    
+
+        <div class="images">
+            <img id="s1" class="fruit" src="kuvat/kirsikka.png">
+            <img id="s2" class="fruit" src="kuvat/omena.png">
+            <img id="s3" class="fruit" src="kuvat/päärynä.png">
+            <img id="s4" class="fruit" src="kuvat/vesimeloni.png">
+        </div>        
+
+        <div class="locks">
+            <span class="lukko">
+                <img id="btn-lock1" data-lock="0" onclick="lukitse(this)" src="kuvat/lukko1.png" width="150px">
+            </span>
+            <span class="lukko">
+                <img id="btn-lock2" data-lock="1" onclick="lukitse(this)" src="kuvat/lukko1.png"width="150px">
+            </span>
+            <span class="lukko">
+                <img id="btn-lock3" data-lock="2" onclick="lukitse(this)" src="kuvat/lukko1.png"width="150px">
+            </span>
+            <span class="lukko">
+                <img id="btn-lock4" data-lock="3" onclick="lukitse(this)" src="kuvat/lukko1.png"width="150px">
+            </span>
+            
+        </div>
+    </div>
+
+    <script src="js.js"></script>       
+</body>
+</html>
