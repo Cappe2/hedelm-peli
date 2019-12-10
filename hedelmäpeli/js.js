@@ -9,10 +9,26 @@ let rahat = 75;
 const panokset = [1,2,5];
 let panosIndex = 0;
 
-//UI päivitys
+var span = document.getElementsByClassName("close")[0];
 
-function updateUi(){
+function showModal(elemId){
+    document.getElementById(elemId).style.display = "block";
+    captionTeksti.innerHTML = this.alt;
+}
+
+window.onclick = function(event){
     
+    let modaali = event.target;
+    if (modaali.id == "myModal") {
+        modaali.style.display = "none";
+    }
+    
+}
+
+//UI päivitys
+tarkistaVoitto();
+function updateUi(){
+
     document.getElementById("rahat").innerHTML = rahat;
 
     // Panos
@@ -56,6 +72,7 @@ function play(){
     rahat = rahat - panokset[panosIndex]
 
     if (rahat < panokset[panosIndex]){
+        alert("Hävisit!")
         location.reload();
     }
     
@@ -71,17 +88,18 @@ function play(){
     if (locks[3] == 0) {
         slots[3] = Math.floor(Math.random() * 4);
     }
+    
 
     
 
-
-    
-   
-    
 
     // Jos joku lukoista on lukittu, niin saa_lukita muutetaan falseksi
 
-    if (locks[0] == 1 || locks[1] == 1 || locks[2] == 1 || locks[3] == 1) 
+    if (locks[0] == 1 || locks[1] == 1 || locks[2] == 1 || locks[3] == 1) {
+        saa_lukita = false;
+    } else {
+        saa_lukita = true;
+    }
 
     // muussa tapauksessa saa_lukita muutetaan trueksi
    
@@ -92,10 +110,24 @@ function play(){
     
 
     updateUi();
-        
+    
+    tarkistaVoitto();
+
+}
+
+function tarkistaVoitto(){
+
+    if (slots[0] == slots[1] && slots[1] == slots[2] && slots[2] == slots[3]) {
+        rahat = rahat + 10;
+        showModal('myModal');
+    }    
+
+    updateUi();
+
 }
 
 //Lukituspainikkeen kuvan vaihto
+
 function lukitse(elem) {
     console.log(elem.dataset.lock);
     
@@ -113,10 +145,8 @@ function lukitse(elem) {
 
     }
 
-    }
-        
-
     updateUi();
+}
 
 
 //Panoksen vaihtaminen
@@ -128,10 +158,30 @@ function asetaPanos () {
     }
     
     updateUi()
+}     
 
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
 }
 
-//voiton tarkistus
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
-
-
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
