@@ -120,8 +120,30 @@ function tarkistaVoitto(){
     if (slots[0] == slots[1] && slots[1] == slots[2] && slots[2] == slots[3]) {
         rahat = rahat + 10;
         showModal('myModal');
-    }    
+        saa_lukita = false;
+    }  
+    else if (slots[0] == 0 && slots[1] == 0 && slots[2] == 0 && slots[3] == 0) {
+        rahat = rahat + 1;
+        showModal('myModal');
+        saa_lukita = false;
+    }  
 
+    else if (slots[0] == 1 && slots[1] == 1 && slots[2] == 1 && slots[3] == 0){
+        rahat = rahat + 3;
+        showModal('myModal');
+        saa_lukita = false;
+    }
+    else if (slots[0] == 2 && slots[1] == 2 && slots[2] == 2 && slots[3] == 2){
+        rahat = rahat + 6;
+        showModal('myModal');
+        saa_lukita = false;
+    }
+    else if (slots[0] == 3 && slots[1] == 3 && slots[2] == 3 && slots[3] == 3){
+        rahat = rahat + 10;
+        showModal('myModal');
+        saa_lukita = false;
+    }
+ 
     updateUi();
 
 }
